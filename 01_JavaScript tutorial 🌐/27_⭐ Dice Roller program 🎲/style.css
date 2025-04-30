@@ -1,0 +1,45 @@
+/* Your CSS styles here */
+
+#container {
+    font-family :'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: azure;
+
+}
+
+button{
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #283ad9;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: #2998e2;
+}
+
+input{
+    width: 150px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#diceResult{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #283ad9;
+    margin: 25px;
+}
+
+#diceImages img{
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+}

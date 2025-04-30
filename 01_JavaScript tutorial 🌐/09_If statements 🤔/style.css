@@ -1,0 +1,35 @@
+/* Your CSS styles here */
+
+body{
+    background-color: azure;
+    font-size: 2em;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: blue;
+}
+
+#mybutton{
+    font-size: 25px;
+    padding: 5px;
+    
+    border-color: blue;
+    color: rgb(15, 8, 150);
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+
+
+#mybutton:hover{
+background-color: rgb(16, 85, 139);
+}
+#enterval{
+    font-size: 0.5em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px;
+    border-radius: 5px;
+    border-color: blue;
+}
+#showval{
+    font-size: 1em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}

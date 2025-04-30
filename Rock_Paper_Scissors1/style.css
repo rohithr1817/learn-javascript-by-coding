@@ -1,0 +1,140 @@
+* {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* ✅ Prevents padding/margin from affecting width */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* ✅ Added a light background for better contrast */
+}
+
+/* Header */
+h1 {
+    background-color: black;
+    color: azure;
+    height: 5rem;
+    line-height: 5rem;
+}
+
+/* Choices Styling */
+.choices {
+    display: flex;
+    margin-top: 3rem;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap; /* ✅ Allows wrapping on smaller screens */
+}
+
+.choice {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease-in-out; /* ✅ Smooth hover effect */
+    border: 5px solid transparent; /* ✅ Transparent border to avoid layout shift on hover */
+}
+
+.choice:hover {
+    cursor: pointer;
+    background-color: black;
+    opacity: 0.7; /* ✅ Improved hover effect */
+    border: 5px solid white; /* ✅ Added white border on hover */
+}
+
+img {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Score Board */
+.score-board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.score {
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* ✅ Added shadow for depth */
+}
+
+#user-score, 
+#comp-score {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+/* Message Box */
+.msg-container {
+    margin-top: 2rem;
+}
+
+#msg {
+    background-color: black;
+    color: aliceblue;
+    font-size: 1.8rem;
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* ✅ Added shadow for a raised effect */
+}
+
+/* Reset Button */
+#reset {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out; /* ✅ Smooth button transition */
+}
+
+#reset:hover {
+    background-color: darkred; /* ✅ Darker red on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .choices {
+        gap: 1.5rem; /* ✅ Reduced gap for smaller screens */
+    }
+
+    .choice {
+        height: 120px;
+        width: 120px;
+    }
+
+    img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .score-board {
+        gap: 2rem;
+        font-size: 1.5rem; /* ✅ Adjusted font size for smaller screens */
+    }
+
+    #user-score, #comp-score {
+        font-size: 3rem;
+    }
+
+    #msg {
+        font-size: 1.5rem; /* ✅ Adjusted message size for mobile */
+    }
+}

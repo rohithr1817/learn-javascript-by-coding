@@ -1,0 +1,29 @@
+*{
+    background-color: azure;
+    text-align: center;
+}
+
+h1{
+    color: blue;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+button{
+    font-size: 2.5rem;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: blue;
+    color: azure;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+button:hover{
+    background-color: rgb(106, 160, 247);
+}
+
+div{
+    color:blue;
+    font-size: 2.5rem;
+}

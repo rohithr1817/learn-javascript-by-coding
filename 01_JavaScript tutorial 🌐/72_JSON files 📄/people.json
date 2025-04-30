@@ -1,0 +1,46 @@
+[
+    {
+        "name": "ASH",
+        "age": 25,
+        "address": {
+            "street": "123 Oak St",
+            "city": "Pallet Town",
+            "state": "Kanto",
+            "zip": "12345"
+        },
+        "email": "ash@example.com"
+    },
+    {
+        "name": "NOBITA",
+        "age": 10,
+        "address": {
+            "street": "456 Maple St",
+            "city": "Tokyo",
+            "state": "Tokyo",
+            "zip": "67890"
+        },
+        "email": "nobita@example.com"
+    },
+    {
+        "name": "SHINCHAN",
+        "age": 5,
+        "address": {
+            "street": "789 Pine St",
+            "city": "Kasukabe",
+            "state": "Saitama",
+            "zip": "54321"
+        },
+        "email": "shinchan@example.com"
+    },
+    {
+        "name": "MR.BEAN",
+        "age": 40,
+        "address": {
+            "street": "101 Elm St",
+            "city": "London",
+            "state": "England",
+            "zip": "11223"
+        },
+        "email": "mr.bean@example.com"
+    }
+]

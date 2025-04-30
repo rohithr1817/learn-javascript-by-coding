@@ -1,0 +1,38 @@
+/* Your CSS styles here */
+
+
+body{
+    margin: 0;
+    background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fG5hdHVyZXxlbnwwfHx8fDE2OTY1NTQ3MjM&ixlib=rb-4.0.3&q=80&w=1080'); 
+    /* background-image: url(clock_bg.jpg); */
+    background-size : cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+h1{
+    text-align: center;
+    margin-top: 100px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #110e0e;
+}
+
+#clock-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+#clock{
+    font-size: 60px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #e7d3d3;
+    backdrop-filter: blur(5px);
+    width: 100%;
+    background-color: #c0808009;
+    text-align: center;
+    font-weight: bold;
+    justify-content: center;
+}

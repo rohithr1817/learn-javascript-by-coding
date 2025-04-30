@@ -1,0 +1,14 @@
+body{
+    font-family: Verdana;
+    text-align: center;
+}
+#mybutton{
+    font-size: 3em;
+    padding: 5px 25px;
+    border-radius: 10px;
+
+}
+
+.textboxs{
+    font-size: 3em;
+}

@@ -1,0 +1,21 @@
+
+/* Your CSS styles here */
+
+#myBox{
+    background-color: aquamarine;
+    width: 200px;
+    height: 200px;
+    font-size: 3.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+}
+
+#myButton{
+    font-size: 1.5rem;
+    font-weight: bold;
+    
+}

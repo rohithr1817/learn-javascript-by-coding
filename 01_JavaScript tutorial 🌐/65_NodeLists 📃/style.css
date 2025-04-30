@@ -1,0 +1,29 @@
+/* Your CSS styles here */
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    margin: 10px auto;
+    background-color: lightgray;
+    display: inline-block;
+    line-height: 100px;
+    color: white;
+    font-weight: bold;
+}
+
+.myButtons {
+    padding: 10px 20px;
+    font-size: 2.5rem;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: blue;
+    color:aliceblue;
+}

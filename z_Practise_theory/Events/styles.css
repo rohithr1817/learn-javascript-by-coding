@@ -1,0 +1,20 @@
+body{
+    background-color: white;
+    color: rgb(13, 150, 230);
+}
+
+div{
+    background-color: snow;
+    margin: 0%;
+    padding: 50px;
+    border: 1px solid black;
+    width: 100px;
+
+}
+
+.dark{
+    background-color: black;
+}
+.light{
+    background-color: rgb(241, 239, 239);
+}

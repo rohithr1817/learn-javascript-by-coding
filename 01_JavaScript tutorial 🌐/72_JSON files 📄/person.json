@@ -1,0 +1,12 @@
+
+{
+    "name": "MR.BEAN",
+    "age": 30,
+    "isStudent": true,
+    "hobbies": ["reading", "hiking", "coding"],
+    "address": {
+        "street": "123 Main St",
+        "city": "Wonderland",
+        "zip": "12345"
+    }
+}

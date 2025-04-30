@@ -1,0 +1,213 @@
+
+
+ => Promises 
+
+    Promise is for "eventual" completion of task. It is an object in JS. 
+    It is a solution to callback hell.
+                 let promise = new Promise( (resolve, reject) => { ....})
+                                                |       |
+                                                ---------
+                                                    |
+                                        Function with 2 handlers
+
+    *resolve & reject are callbacks provided by JS*
+
+    In JavaScript, Promises are a powerful way to handle asynchronous operations. 
+    They provide a cleaner alternative to traditional callback functions, allowing you to write more readable and maintainable code. 
+    A Promise represents a value that may be available now, or in the future, or never.
+
+                             or
+    Promises are like a way to say, "I will do something later."
+    They help you manage tasks that take time, like getting data from a server.
+    Instead of waiting for the task to finish, you can keep doing other things and come back to the result later.   
+
+    =>How Do They Work?
+    1)Three States:
+            Pending: The task is still happening.
+            Fulfilled: The task finished successfully, and you got the result.
+            Rejected: The task failed, and you got an error.
+    2) Creating a Promise:
+            You make a promise by saying what you want to do and what to do when it’s done or if it fails.
+
+
+==============================================================================================================================================================
+
+
+       => Summary
+        1) Promise: A way to handle tasks that will finish later.
+        2) States: Pending, Fulfilled, Rejected.
+        3) Methods: Use .then() for success and .catch() for errors.
+        4) Async/Await: A cleaner way to work with promises.
+
+   ===>Promises using Methods :
+     .then() & .catch()
+
+     promise.then( (res) => {....})
+     promise.then( (err) => {....})
+
+
+=========================================================================================================================================
+
+1.Creating a Promise
+You create a Promise using the Promise constructor:
+
+***
+                const myPromise = new Promise((resolve, reject) => {
+        // Simulate an asynchronous task
+        const success = true; // Change to false to simulate failure
+
+        if (success) {
+                resolve("Task completed!"); // Success
+        } else {
+                reject("Task failed!"); // Failure
+        }
+        });
+***
+
+
+2.Using a Promise
+You can handle the result of a Promise using .then() for success and .catch() for errors:
+
+***
+        myPromise
+        .then(result => {
+                console.log(result); // "Task completed!"
+        })
+        .catch(error => {
+                console.error(error); // "Task failed!"
+        });
+
+***
+
+3.Chaining Promises
+You can chain multiple .then() calls to perform a series of tasks:
+
+***
+        myPromise
+        .then(result => {
+                console.log(result);
+                return "Next task"; // Pass to the next .then()
+        })
+        .then(nextResult => {
+                console.log(nextResult); // "Next task"
+        })
+        .catch(error => {
+                console.error(error);
+        });
+
+***
+
+4.Running Multiple Promises
+You can run multiple promises at the same time using Promise.all():
+
+***
+        const promise1 = Promise.resolve(1);
+        const promise2 = new Promise((resolve) => setTimeout(resolve, 100, 'two'));
+
+        Promise.all([promise1, promise2])
+        .then(values => {
+                console.log(values); // [1, "two"]
+        });
+
+***
+
+5. Using Async/Await
+
+                                5) Promises with async/await
+=> It is a cleaner way to work with promises, making the code look more synchronous and easier to read.
+=> It allows you to write asynchronous code that looks synchronous, making it easier to read and maintain.
+
+=> async function always returns a promise, even if you don't explicitly return one.
+=> await is used to wait for a promise to resolve or reject before moving on to the next line of code.
+
+         async function myFunction() {
+             console.log("I am an async function!");
+               }
+
+=> await puases the execution of the async function until the promise is resolved or rejected.
+=> await is always used inside the async function
+
+
+=>You can make your code look cleaner with async and await:
+
+***
+        const asyncFunction = async () => {
+        try {
+                const result = await myPromise; // Wait for the promise to finish
+                console.log(result);
+        } catch (error) {
+                console.error(error);
+        }
+        };
+
+        asyncFunction();
+***
+
+
+       => Summary
+        1) Promise: A way to handle tasks that will finish later.
+        2) States: Pending, Fulfilled, Rejected.
+        3) Methods: Use .then() for success and .catch() for errors.
+        4) Async/Await: A cleaner way to work with promises.
+        That's it! Promises help you manage asynchronous tasks in a more organized way.
+
+Example:
+
+     
+
+        function getData1(dataId,getNextData){
+        return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                console.log("Data fetched for ID:", dataId); // Simulate fetching 
+                resolve("success"); // Resolve the promise with a value
+                // reject("Error fetching data!"); // Uncomment to simulate rejection
+                }, 3000); // Simulate a delay of 5 seconds
+        });
+        }
+
+        =>using CallBack-Hell
+
+                let result1 = getData(1, () => {
+                 console.log("Data for ID 1 fetched, now fetching data for ID 2...");
+                  getData(2, () => {
+                   console.log("Data for ID 2 fetched, now fetching data for ID 3...");
+                    getData(3, () => {
+                     console.log("Data for ID 3 fetched, now fetching data for ID 4...");
+                      getData(4) 
+                // console.log("All data fetched!"); // All data has been fetched
+                });
+        });
+        })
+
+
+        => using Promises Chaining
+
+             getData1(1).then((res) => {
+        return getData1(2); // Return the next promise
+        })
+        .then((res) => {
+            return getData1(3); // Return the next promise
+        })
+        .then((res) => {
+            return getData1(4); // Return the next promise
+        })
+        .then((res) => {
+            console.log(res); // Handle success
+        })
+        .catch((error) => {
+            console.log("Error:", error); // Handle error
+        });
+        
+
+        => Using Async/Await Example:
+
+        async function getAllData() {
+        console.log("Fetching Data 1......."); // Start fetching data 1
+        await getData1(1); // Wait for the first promise to resolve
+        console.log("Fetching Data 2......."); // Start fetching data 2
+        await getData1(2); // Wait for the second promise to resolve
+        console.log("Fetching Data 3......."); // Start fetching data 3
+        await getData1(3); // Wait for the third promise to resolve
+        }
+
+        getAllData(); // Call the async function

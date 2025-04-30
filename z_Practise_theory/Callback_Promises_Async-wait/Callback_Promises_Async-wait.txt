@@ -1,0 +1,197 @@
+                            
+                            
+ Callback_Promises_Async-wait:
+
+ async await >> promise chains >> callback hell
+
+
+ => Sync in JS
+    Synchronous:
+        Synchronous means the code runs in a particular sequence of instructions given in the program. 
+        Each instruction waits for the previous instruction to complete its execution.
+    
+    Asynchronous:
+        Due to synchronous programming, sometimes imp instructions get
+        blocked due to some previous instructions, which causes a delay in the UI. 
+        Asynchronous code execution allows to execute next instructions immediately and doesn't block the flow.
+
+Synchronousync in js:
+    In JavaScript, "sync" typically refers to synchronous programming, which is a way of executing code where each operation is completed before the next one begins. 
+    This means that the code runs in a sequential manner, blocking further execution until the current operation is finished.
+
+        Synchronous Code Example
+        Here’s a simple example of synchronous code:
+
+    **  console.log("Start");
+
+        function greet() {
+            console.log("Hello!");
+        }
+
+        greet(); // This will block the execution until it finishes
+
+        console.log("End");  **
+    
+    Output:
+        Start
+        Hello!
+        End
+
+    Explanation:
+    1) Sequential Execution: The code runs from top to bottom. The first line logs "Start", then the greet() function is called, which logs "Hello!", and finally, "End" is logged.
+    2) Blocking Behavior: The greet() function must complete before the next line of code (console.log("End")) is executed. This is the essence of synchronous programming: each operation must finish before the next one starts.
+       
+        =>>Limitations of Synchronous Code:
+        1) Blocking: If a synchronous operation takes a long time (like a heavy computation or a network request), it will block the entire execution thread, making the application unresponsive.
+        2) User Experience: In web applications, synchronous code can lead to a poor user experience, as the UI may freeze while waiting for operations to complete.
+        
+        
+    =>Asynchronous Programming:
+        To overcome the limitations of synchronous code, JavaScript uses asynchronous programming, which allows certain operations to run in the background while the main thread continues executing other code. 
+        This is often done using callbacks, promises, or async/await syntax.
+    
+    Example of Asynchronous Code
+    Here’s a simple example using setTimeout, which is an asynchronous function:
+
+****
+    console.log("Start");
+
+    setTimeout(() => {
+        console.log("Hello after 2 seconds!");
+    }, 2000); // This will run after 2 seconds
+
+    console.log("End");
+****
+    Output:
+        Start
+        End
+        Hello after 2 seconds!
+
+    => Explanation
+    1) Non-blocking: The setTimeout function schedules the callback to run after 2 seconds but does not block the execution of the next line (console.log("End")).
+    2) Improved User Experience: The application remains responsive, allowing other operations to continue while waiting for the timeout to complete.
+
+    =>Summary
+    1) Synchronous Code: Executes sequentially, blocking further execution until the current operation is complete.
+    2) Asynchronous Code: Allows operations to run in the background, improving responsiveness and user experience.
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+    //  //  // Callback
+
+    A callback in JavaScript is a function that is passed as an argument to another function and is executed after some operation has been completed. 
+    Callbacks are commonly used in asynchronous programming to handle tasks that take time, such as network requests, file reading, or timers.
+
+Example of a Callback
+Here’s a simple example to illustrate how callbacks work:
+    
+    ***
+        // Function to greet a user
+        function greet(name) {
+            return `Hello, ${name}!`; // Return a greeting message
+        }
+
+        // Function that takes a name and a callback
+        function welcomeUser (name, callback) {
+            const message = callback(name); // Call the callback with the name
+            console.log(message); // Log the greeting message
+        }
+
+        // Call welcomeUser  with a name and the greet function as a callback
+        welcomeUser ("Alice", greet);
+    ***
+
+
+    Example-02:
+
+    ***
+       // Function to sum two numbers
+        function sum(a, b) {
+            return a + b; // Return the sum of a and b
+        }
+
+        // Function that takes two numbers and a callback
+        function calculator(a, b, sumCallback) {
+            const result = sumCallback(a, b); // Call the callback with a and b
+            console.log("The result is:", result); // Log the result
+        }
+
+        // Call the calculator function with numbers and the sum function as a callback
+        calculator(1, 2, sum);
+
+        Output: The result is: 3
+    ***
+
+    Explanation:
+    1) sum Function: This function takes two parameters, a and b, and returns their sum.
+    2)calculator Function: This function takes two numbers (a and b) and a callback function (sumCallback). It calls the callback with a and b, stores the result, and logs it to the console.
+    3) Calling calculator: When you call calculator(1, 2, sum), it passes the numbers 1 and 2 to the sum function via the callback, and the result is logged.
+    This structure allows you to use different callback functions with the calculator function if needed, making it flexible for various operations.
+
+    ----------Summary----------
+   1) sum (without parentheses) is a reference to the function, allowing calculator to call it later with the provided arguments.
+   2) sum() (with parentheses) calls the function immediately and passes the result to calculator, which is not what you want in this case.
+
+
+
+   -----------------------------------------------------------------------------------------------------------------------------
+
+   
+   Callback Hell-
+    "Callback hell" refers to a situation in programming, particularly in JavaScript, where multiple nested callbacks make the code difficult to read and maintain. 
+     This often occurs in asynchronous programming when you have several operations that depend on the results of previous operations, leading to deeply nested structures.
+  
+                  or
+    Callback Hell: Nested callbacks stacked below one another forming a pyramid structure.
+                  (Pyramid of Doom)
+                   This style of programming becomes difficult to understand & manage.
+
+
+// // In this example, we have a function getData that simulates fetching data with a delay.
+
+    function getData(dataId){
+        setTimeout(() => {
+            console.log("Data fetched for ID:", dataId); // Simulate fetching data
+        }, 2000); // Simulate a delay of 2 seconds
+    }
+
+    getData(1); // Fetch data for ID 1
+    getData(2); // Fetch data for ID 2
+    getData(3); // Fetch data for ID 3   // here within 2 sec all 3 data getData is runned but need after one by one
+
+
+//but here we need  to start count 2 sec after getData(1) is done from that next start getData(2) and afyter that getData(3) is done
+// so we can use callback hell to avoid this problem
+
+
+    function getData(dataId,getNextData){
+        setTimeout(() => {
+            console.log("Data fetched for ID:", dataId); // Simulate fetching data
+            if(getNextData){
+                getNextData(); // Call the next function if provided
+            }
+            else{
+                console.log("No more data to fetch!"); // No more data to fetch
+            }
+        }, 3000); // Simulate a delay of 2 seconds
+    }
+
+        // CallBack Hell Example
+        // This is an example of callback hell, where callbacks are nested inside each other
+        getData(1, () => {
+            console.log("Data for ID 1 fetched, now fetching data for ID 2...");
+            getData(2, () => {
+                console.log("Data for ID 2 fetched, now fetching data for ID 3...");
+                getData(3, () => {
+                    console.log("Data for ID 3 fetched, now fetching data for ID 4...");
+                    getData(4) 
+                    // console.log("All data fetched!"); // All data has been fetched
+                });
+            });
+        });
+        // Output: 1) Data fetched for ID: 1 (after 2 seconds)
+        //         2) Data fetched for ID: 2 (after 2 seconds)  
+        //         3) Data fetched for ID: 3 (after 2 seconds)
+    

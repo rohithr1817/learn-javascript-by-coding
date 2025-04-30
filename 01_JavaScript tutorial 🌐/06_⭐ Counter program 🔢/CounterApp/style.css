@@ -1,0 +1,40 @@
+*{
+    background-color: azure;
+   }
+#head{
+    text-align: center;
+    font-size: 3em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+   #countlab{
+       margin: 0;
+       color: rgb(6, 39, 66);
+       display: block;
+       text-align: center;
+       font-size: 10em;
+       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   }
+
+   .buttons{
+    color: rgb(225, 225, 235);
+    padding: 10px 20px;
+    background-color: blue;
+    font-size: 1.5em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.25s;
+   }
+
+   .buttons:hover{
+    background-color: rgb(85, 160, 218);
+   }
+  
+   #buttonall{
+    text-align: center;
+   }
+
+
+   h1{
+    color: blue;
+}

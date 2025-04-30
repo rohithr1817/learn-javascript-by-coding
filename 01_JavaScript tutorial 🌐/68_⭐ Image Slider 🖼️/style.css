@@ -1,0 +1,54 @@
+/* Your CSS styles here */
+
+*{
+    background-color:azure;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    object-fit: cover;
+    overflow: hidden; 
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+    display: none;
+    object-fit: cover;
+    overflow: hidden; 
+    
+}
+
+img.displaySlide{
+    display:block;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+.slider button{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    padding: 10-x 15px;
+    background-color: rgba(17, 10, 10, 0.39);
+    color: white;
+    border:none;
+    cursor: pointer;
+}
+
+.previous{
+    left : 0;
+}
+
+.next{
+    right:0;
+}
+
+@keyframes fade {
+    from {opacity: .5}
+    to {opacity: 1}
+}

@@ -1,0 +1,318 @@
+Prototypes in JavaScript:
+
+A JavaScript object is an entity having state and behaviour (properties and method).
+
+JavaScript objects have a special property called prototype.
+
+We can set prototype using __proto__
+
+*If objects & prototype have same method, object's method will be used.*
+
+Example:
+
+const student = {
+  name: "Rohit",
+  age: 22,
+  marks: { math: 85, science: 90, english: 88 },
+
+  getDetails: function () {
+    return `Student: ${this.name}, Age: ${this.age}`;
+  },
+
+  getAverageMarks: function () {
+    let total = this.marks.math + this.marks.science + this.marks.english;
+    return total / 3;
+  },
+
+  isPassed: function () {
+    return this.getAverageMarks() >= 40 ? "Passed" : "Failed";
+  }
+};
+
+console.log(student.getDetails()); // ✅ Uses this.name and this.age
+console.log(student.isPassed());   // ✅ Calls this.getAverageMarks()
+
+
+***
+        In JavaScript, this refers to the current object (student) that is executing the function. 
+
+        In your student object:
+        this.name → Refers to the name property inside the object.
+        Example: this.name is "Rohit" inside getDetails().
+
+        this.getAverageMarks() → Calls another method inside the same object.
+        Example: isPassed() calls this.getAverageMarks() to check if the student has passed.
+
+        Key Points
+                this refers to the current object (student).
+
+                this.propertyName → Accesses a property inside the object.
+
+                this.methodName() → Calls another method inside the same object.
+***
+
+
+
+                 Classes in JavaScript
+A class in JavaScript is a way to create objects that share the same properties and methods. 
+It acts like a template, allowing you to create multiple instances (objects) with similar characteristics and behaviors. 
+You can think of it as a blueprint for building objects.
+
+                    or
+In JavaScript, a class is a blueprint for creating objects that encapsulates data (properties) and behavior (methods) in a single structure. 
+It provides a more intuitive syntax for object-oriented programming, allowing for inheritance and the creation of instances using the new keyword.
+
+//these objects will have some state (variables) & some behavior (functions) inside it.
+
+syntax:
+class myClass{
+  constructor () {
+
+  }
+  myMethod () {
+
+  }
+}
+
+let myObj = new myClass();
+
+
+
+Example 1:
+class Toyato {
+  start(){
+    console.log("start")
+  }
+  stop(){
+    console.log("stop")
+  }
+}
+
+let fortuner = new Toyato();
+let innova = new Toyato();
+
+
+Example 2:
+class Toyota {
+    start() {
+        console.log("start");
+    }
+    stop() {
+        console.log("stop");
+    }
+    setbrand(brand) {
+        this.brand = brand;
+    }
+}
+
+// Create an instance of the Toyota class
+ const benz = new Toyota();
+
+// Check the initial state of the benz object
+ console.log(benz); // Output: Toyota {}
+
+// The brand property is undefined at this point
+ console.log(benz.brand); // Output: undefined
+
+// Set the brand using the setbrand method
+ benz.setbrand("Benz");
+
+// Now the brand property is set
+ console.log(benz.brand); // Output: "Benz"
+
+
+            // // Constructor
+        A constructor in JavaScript is a special method within a class that is automatically called when a new instance of the class is created. 
+        It initializes the object's properties and can take parameters to set those properties. 
+        Essentially, it serves as a blueprint for creating and setting up new objects.
+
+
+ Example 3: same above problem with constructor
+
+ Example with Constructor
+Here’s how you can modify the Toyota class to include the brand property in the constructor:
+
+class Toyota {
+    constructor(brand) {
+        this.brand = brand; // Initialize the brand property
+    }
+
+    start() {
+        console.log("start");
+    }
+
+    stop() {
+        console.log("stop");
+    }
+}
+
+// Create an instance of the Toyota class with the brand name
+const benz = new Toyota("Benz");
+
+// Check the state of the benz object
+console.log(benz); // Output: Toyota { brand: 'Benz' }
+console.log(benz.brand); // Output: "Benz"
+
+
+Explanation
+Constructor: The constructor(brand) method is called when you create a new instance of the Toyota class. 
+             It takes a parameter brand and assigns it to the instance's brand property.
+
+Creating an Instance: When you create a new instance with const benz = new Toyota("Benz");, 
+                      the brand property is automatically set to "Benz".
+                
+
+    Example 4:
+
+    // Define the Student class
+class Student {
+    // Constructor to initialize properties
+    constructor(firstName, lastName, age, major, grades) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.major = major;
+        this.grades = grades;
+    }
+
+    // Method to calculate the average grade
+    calculateAverageGrade() {
+        const total = this.grades.reduce((acc, grade) => acc + grade, 0);
+        return total / this.grades.length;
+    }
+
+    // Method to display student information
+    displayInfo() {
+        console.log(`Student Name: ${this.firstName} ${this.lastName}`);
+        console.log(`Age: ${this.age}`);
+        console.log(`Major: ${this.major}`);
+        console.log(`Average Grade: ${this.calculateAverageGrade().toFixed(2)}`);
+    }
+}
+
+// Creating an instance of the Student class
+const student1 = new Student("John", "Doe", 20, "Computer Science", [90, 85, 88, 92]);
+
+// Example usage
+student1.displayInfo();
+
+
+Explanation:
+Class Definition:
+
+class Student: This defines a new class named Student.
+Constructor:
+
+The constructor method is a special method for creating and initializing an object created with the class. It takes parameters to set the properties of the student.
+Methods:
+
+calculateAverageGrade: This method calculates the average of the grades for the student instance.
+displayInfo: This method logs the student's information to the console.
+Creating an Instance:
+
+const student1 = new Student(...): This line creates a new instance of the Student class with specific values.
+Using the Methods:
+
+student1.displayInfo(): This calls the displayInfo method on the student1 instance, which outputs the student's information to the console.
+Benefits of Using Classes:
+Readability: The class syntax is more intuitive and easier to read than the traditional prototype-based approach.
+Inheritance: Classes make it easier to create subclasses and implement inheritance using the extends keyword.
+Encapsulation: Classes can encapsulate data and methods, making it easier to manage and maintain code.
+
+
+
+
+      // inheritance
+
+      inheritance is passing down properties & methods from parent class to child class
+
+      syntax:
+
+      class Parent {
+
+      }
+
+      class Child extends Parent{
+
+      }
+
+      Method Overreding - If child and parent have same method, child's method will be used.
+
+
+
+      // Base class (Parent class)
+
+
+      Example1:
+class Animal {
+  constructor(name) {
+      this.name = name; // Set the name of the animal
+  }
+  sleep() {
+      console.log(`${this.name} is sleeping.`); // Method to indicate sleeping
+  }
+  eat() {
+      console.log(`${this.name} is eating.`); // Method to indicate eating
+  }
+  speak() {
+      console.log(`${this.name} makes a noise.`); // Method to make a noise
+  }
+}
+
+// Derived class (Child class)
+class Dog extends Animal {
+  speak() {
+      console.log(`${this.name} barks.`); //  Method Override the speak method
+  }
+}
+
+// Create an instance of the Dog class
+const myDog = new Dog("Blacky");
+
+// Use the methods
+myDog.speak(); // Output: Rex barks.
+myDog.sleep(); // Output: Rex is sleeping.
+myDog.eat();   // Output: Rex is eating.
+
+
+
+
+       // // Super() method
+// The super() method is used to call the constructor of the parent class from the child class.
+// This allows the child class to inherit properties and methods from the parent class.
+
+// Base class (Parent class)
+
+   //Example 2:
+
+class Animal1 {
+  constructor(name) {
+      this.name = name; // Set the name of the animal
+  }
+
+  speak() {
+      console.log(`${this.name} makes a noise.`); // Generic animal noise
+  }
+}
+
+// Derived class (Child class)
+class Dog1 extends Animal1 {
+  constructor(name, breed) {
+      super(name); // Call the parent class constructor
+      this.breed = breed; // Set the breed of the dog
+  }
+
+  speak() {
+      super.speak(); // Call the parent class speak method
+      console.log(`${this.name} barks.`); // Specific behavior for dogs
+  }
+}
+
+// Create an instance of the Dog class
+const myDog1 = new Dog1("Rex", "Golden Retriever");
+
+// Use the methods
+myDog1.speak(); 
+// Output:
+// Rex makes a noise.
+// Rex barks.
